@@ -7,6 +7,7 @@ module.exports = {
     connect: async () => {
         if(!db) {
             db = await MongoMemoryServer.create();
+            mongoose.set('strictQuery', false);
             await mongoose.connect(db.getUri())
         }
     },
