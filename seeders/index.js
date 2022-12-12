@@ -1,7 +1,5 @@
 'use strict';
 const userSeeder = require("./user.seeder");
-const hospitalSeeder = require("./hospital.seeder");
-const doctorSeeder = require("./doctor.seeder");
 const { dbConnect } = require("../helpers");
 
 let exitAfterSeeding = false;
