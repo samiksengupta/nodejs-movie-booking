@@ -9,11 +9,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(masterRouter);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     process.stdout.write(`Server started at ${HOST}:${PORT} (${ENV})\n`);
-    dbConnect().then(msg => { console.log(msg) }).catch(err => { console.log(err) });
+    dbConnect().catch(err => { console.log(err) });
 });
 
-module.exports = {
-    app
-};
+module.exports = server;
