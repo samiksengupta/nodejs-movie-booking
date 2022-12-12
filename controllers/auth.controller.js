@@ -15,7 +15,7 @@ const login = async (req, res) => {
     const user = await User.authenticate(req.body.email, req.body.password).catch(error => handleUnauthorizedResponse(res));
     if(user) {
         user.refreshToken = generateRefreshToken();
-        user.save();
+        await user.save();
         res.status(200).json({
             accessToken: generateAccessToken(user),
             refreshToken: user.refreshToken
@@ -48,8 +48,8 @@ const refresh = async (req, res) => {
 }
 
 module.exports = {
-    register: register,
-    login: login,
-    logout: logout,
-    refresh: refresh
+    register,
+    login,
+    logout,
+    refresh
 }
